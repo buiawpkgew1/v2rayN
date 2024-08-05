@@ -74,11 +74,13 @@ namespace v2rayN.ViewModels
         [Reactive] public string SpeedPingTestUrl { get; set; }
         [Reactive] public bool EnableHWA { get; set; }
         [Reactive] public string SubConvertUrl { get; set; }
+        [Reactive] public int MainGirdOrientation { get; set; }
 
         #endregion UI
 
         #region System proxy
 
+        [Reactive] public bool notProxyLocalAddress { get; set; }
         [Reactive] public string systemProxyAdvancedProtocol { get; set; }
         [Reactive] public string systemProxyExceptions { get; set; }
 
@@ -171,13 +173,15 @@ namespace v2rayN.ViewModels
             SpeedPingTestUrl = _config.speedTestItem.speedPingTestUrl;
             EnableHWA = _config.guiItem.enableHWA;
             SubConvertUrl = _config.constItem.subConvertUrl;
+            MainGirdOrientation = (int)_config.uiItem.mainGirdOrientation;
 
             #endregion UI
 
             #region System proxy
 
-            systemProxyAdvancedProtocol = _config.systemProxyAdvancedProtocol;
-            systemProxyExceptions = _config.systemProxyExceptions;
+            notProxyLocalAddress = _config.systemProxyItem.notProxyLocalAddress;
+            systemProxyAdvancedProtocol = _config.systemProxyItem.systemProxyAdvancedProtocol;
+            systemProxyExceptions = _config.systemProxyItem.systemProxyExceptions;
 
             #endregion System proxy
 
@@ -264,7 +268,8 @@ namespace v2rayN.ViewModels
             var needReboot = (EnableStatistics != _config.guiItem.enableStatistics
                             || EnableDragDropSort != _config.uiItem.enableDragDropSort
                             || EnableHWA != _config.guiItem.enableHWA
-                            || CurrentFontFamily != _config.uiItem.currentFontFamily);
+                            || CurrentFontFamily != _config.uiItem.currentFontFamily
+                            || MainGirdOrientation != (int)_config.uiItem.mainGirdOrientation);
 
             //if (Utile.IsNullOrEmpty(Kcpmtu.ToString()) || !Utile.IsNumeric(Kcpmtu.ToString())
             //       || Utile.IsNullOrEmpty(Kcptti.ToString()) || !Utile.IsNumeric(Kcptti.ToString())
@@ -333,10 +338,12 @@ namespace v2rayN.ViewModels
             _config.speedTestItem.speedPingTestUrl = SpeedPingTestUrl;
             _config.guiItem.enableHWA = EnableHWA;
             _config.constItem.subConvertUrl = SubConvertUrl;
+            _config.uiItem.mainGirdOrientation = (EGirdOrientation)MainGirdOrientation;
 
             //systemProxy
-            _config.systemProxyExceptions = systemProxyExceptions;
-            _config.systemProxyAdvancedProtocol = systemProxyAdvancedProtocol;
+            _config.systemProxyItem.systemProxyExceptions = systemProxyExceptions;
+            _config.systemProxyItem.notProxyLocalAddress = notProxyLocalAddress;
+            _config.systemProxyItem.systemProxyAdvancedProtocol = systemProxyAdvancedProtocol;
 
             //tun mode
             _config.tunModeItem.strictRoute = TunStrictRoute;

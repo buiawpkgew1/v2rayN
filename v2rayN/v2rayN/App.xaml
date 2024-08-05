@@ -62,11 +62,9 @@
             </Style>
             <Style TargetType="{x:Type TextElement}">
                 <Setter Property="FontWeight" Value="Regular" />
-                <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
             </Style>
             <Style TargetType="{x:Type TextBlock}">
                 <Setter Property="FontWeight" Value="Regular" />
-                <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
             </Style>
             <Style x:Key="lvItemSelected" TargetType="{x:Type ListViewItem}">
                 <Setter Property="Margin" Value="2" />

@@ -74,6 +74,7 @@ namespace v2rayN
         public const string CommandClearMsg = "CommandClearMsg";
         public const string CommandSendMsgView = "CommandSendMsgView";
         public const string CommandStopSpeedTest = "CommandStopSpeedTest";
+        public const string CommandRefreshProfiles = "CommandRefreshProfiles";
         public const string DelayUnit = "";
         public const string SpeedUnit = "";
         public const int MinFontSize = 10;
@@ -115,6 +116,7 @@ namespace v2rayN
 
         public static readonly List<string> SpeedPingTestUrls = new() {
             @"https://www.google.com/generate_204",
+            @"https://www.gstatic.com/generate_204",
             @"https://www.apple.com/library/test/success.html",
             @"http://www.msftconnecttest.com/connecttest.txt",
         };
@@ -174,8 +176,10 @@ namespace v2rayN
         public static readonly List<string> AllowInsecure = new() { "true", "false", "" };
         public static readonly List<string> DomainStrategy4Freedoms = new() { "AsIs", "UseIP", "UseIPv4", "UseIPv6", "" };
         public static readonly List<string> SingboxDomainStrategy4Out = new() { "ipv4_only", "prefer_ipv4", "prefer_ipv6", "ipv6_only", "" };
+        public static readonly List<string> DomainDNSAddress = ["223.5.5.5", "223.6.6.6", "localhost"];
+        public static readonly List<string> SingboxDomainDNSAddress = ["223.5.5.5", "223.6.6.6", "dhcp://auto"];
         public static readonly List<string> Languages = new() { "zh-Hans", "zh-Hant", "en", "fa-Ir", "ru" };
-        public static readonly List<string> Alpns = new() { "h3", "h2", "http/1.1", "h3,h2,http/1.1", "h3,h2", "h2,http/1.1", "" };
+        public static readonly List<string> Alpns = new() { "h3", "h2", "http/1.1", "h3,h2", "h2,http/1.1", "h3,h2,http/1.1",  "" };
         public static readonly List<string> LogLevels = new() { "debug", "info", "warning", "error", "none" };
         public static readonly List<string> InboundTags = new() { "socks", "http", "socks2", "http2" };
         public static readonly List<string> RuleProtocols = new() { "http", "tls", "bittorrent" };
